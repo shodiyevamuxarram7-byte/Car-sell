@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Avto Savdo Simulyatori</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #1b1d22; font-family: system-ui, sans-serif; touch-action: none; }
+  canvas { display: block; }
+  #hud { position: fixed; top: 12px; left: 12px; color: #fff; font-size: 14px; line-height: 1.4;
+         background: rgba(0,0,0,.45); padding: 8px 12px; border-radius: 8px; pointer-events: none; }
+  #joy { position: fixed; left: 24px; bottom: 32px; width: 120px; height: 120px; border-radius: 50%;
+         background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.3); display: none; }
+  #stick { position: absolute; left: 35px; top: 35px; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,.5); }
+  @media (pointer: coarse) { #joy { display: block; } }
+</style>
+</head>
+<body>
+<div id="hud"><b>Avto Savdo Ofisi</b><br>Harakat: WASD / strelkalar<br>Kamera: sichqoncha yoki barmoq bilan suring</div>
+<div id="joy"><div id="stick"></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ===================== SAHNA =====================
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x20232a);
+
+const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 100);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
